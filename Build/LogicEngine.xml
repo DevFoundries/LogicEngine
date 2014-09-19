@@ -1,0 +1,62 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="TestFast">
+	<PropertyGroup>
+		<MainSln>..\LogicEngine.sln</MainSln>
+		<LogicEngineLib>..\src\LogicEngine.Lib.Test\bin\LogicEngine.Lib.Test.dll</LogicEngineLib>
+		<TestContainers>/testcontainer:$(LogicEngineLib)</TestContainers>
+	</PropertyGroup>
+
+	<Target Name="BuildCommon">
+		<CallTarget Targets="BuildMain" />
+	</Target>
+
+	<Target Name="TestAll">
+		<Message Text="========= Testing All ========" />
+		<Exec Command='mstest.exe /nologo  $(TestContainers) /detail:description' />
+	</Target>
+
+	<Target Name="TestAllCI">
+		<Message Text="========= Testing All ========" />
+		<Exec Command='mstest.exe /nologo  $(TestContainers) /detail:description /resultsfile:TestResults.trx /category:"!ImportData"' />
+	</Target>
+
+	<Target Name="Coverage">
+		<Message Text="========= Testing All ========" />
+		<Exec Command='del TestResults.trx' />
+		<Exec Command='"C:\Program Files (x86)\ncover\ncover.console.exe" //onlywithsource //ea System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute //eas .*tests*;.*Tests* //ef ".*.Designer.cs;.*Web References.*;.*.xaml;.*.g.cs" //x coverage.xml mstest.exe /category:"!DataImport" /detail:description /nologo  $(TestContainers) /resultsfile:TestResults.trx //at ..\..\CoverageTrends\LogicEngine.CoverageTrend' />
+	</Target>
+
+	<Target Name="CoverageReport">
+		<Exec Command='"C:\Program Files (x86)\ncover\ncover.reporting.exe" coverage.xml //p LogicEngine //or FullCoverageReport:Html //op .\coverage\ //mc BranchCoverage:90.00 //mcsc //lt ..\..\CoverageTrends\LogicEngine.CoverageTrend' />
+	</Target>
+	
+	<Target Name="RemoveTestResults">
+		<Exec Command='rmdir /S /Q TestResults' />
+	</Target>
+	
+	<Target Name="SimianReport">
+		<Exec Command='simian-2.3.35.exe -includes=../src/**/*.cs -excludes=**/obj -excludes=**/bin -formatter=xml -failOnDuplication- > simian.xml' />
+		<Exec Command='SimianOutputCleaner.exe' />
+	</Target>
+	
+	<Target Name="Clean">
+		<Message Text="================= Cleaning $(MainSln)"></Message>
+		<PropertyGroup>
+			<OutDir>$(SolutionRoot)\Bin\</OutDir>
+		</PropertyGroup>
+		<MSBuild Projects="$(MainSln)" Properties='OutDir=bin\' Targets='Clean'></MSBuild>
+		<RemoveDir Directories='obj\'></RemoveDir>
+		<Exec Command='git clean -fx -d' WorkingDirectory="..\" />
+	</Target>
+
+	<Target Name="BuildMain">
+		<Message Text="================= Building $(MainSln)"></Message>
+		<CallTarget Targets="RemoveTestResults" />
+		<PropertyGroup>
+			<OutDir>$(SolutionRoot)\Bin\</OutDir>
+		</PropertyGroup>
+		<MSBuild Projects="$(MainSln)" Properties='Configuration=Debug;OutDir=bin\;nowarn=1591' Targets='Rebuild'></MSBuild>
+		<RemoveDir Directories='obj\'></RemoveDir>
+	</Target>
+
+</Project>
+
