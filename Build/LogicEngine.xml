@@ -2,7 +2,8 @@
 	<PropertyGroup>
 		<MainSln>..\LogicEngine.sln</MainSln>
 		<LogicEngineLib>..\src\LogicEngine.Lib.Test\bin\LogicEngine.Lib.Test.dll</LogicEngineLib>
-		<TestContainers>/testcontainer:$(LogicEngineLib)</TestContainers>
+    <Example>..\src\Example.Test\bin\Example.Test.dll</Example>
+    <TestContainers>/testcontainer:$(LogicEngineLib) /testcontainer:$(Example)</TestContainers>
 	</PropertyGroup>
 
 	<Target Name="BuildCommon">
