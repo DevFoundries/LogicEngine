@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LogicEngine.Lib.Test
@@ -9,8 +10,16 @@ namespace LogicEngine.Lib.Test
         [TestMethod]
         public void ConstructorTest()
         {
-            Engine engine = new Engine();
+            Engine<string> engine = new Engine<string>(null);
             Assert.IsNotNull(engine);
         }
+
+        [TestMethod]
+        public void ExecuteTest()
+        {
+            Engine<string> engine = new Engine<string>(new List<IRule<string>>(){new RuleBase<string>()});
+            engine.Execute("blah");
+        }
+
     }
 }

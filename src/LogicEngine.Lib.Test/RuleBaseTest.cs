@@ -9,8 +9,16 @@ namespace LogicEngine.Lib.Test
         [TestMethod]
         public void ConstructorTest()
         {
-            RuleBase ruleBase = new RuleBase();
+            RuleBase<string> ruleBase = new RuleBase<string>();
             Assert.IsNotNull(ruleBase);
+        }
+
+        [TestMethod]
+        public void ExecuteTest()
+        {
+            RuleBase<string> ruleBase = new RuleBase<string>();
+            ruleBase.Execute("blah");
+
         }
     }
 }
