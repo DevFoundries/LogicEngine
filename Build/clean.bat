@@ -1,1 +1,1 @@
-msbuild CTAP.xml /t:Clean 
+msbuild LogicEngine.xml /t:Clean 
