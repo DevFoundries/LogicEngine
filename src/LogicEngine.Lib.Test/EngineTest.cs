@@ -17,9 +17,20 @@ namespace LogicEngine.Lib.Test
         [TestMethod]
         public void ExecuteTest()
         {
-            Engine<string> engine = new Engine<string>(new List<IRule<string>>(){new RuleBase<string>()});
-            engine.Execute("blah");
+            Engine<string> engine = new Engine<string>(new List<IRule<string>>());
+            var result = engine.Execute("blah");
+            Assert.IsNotNull(result);
         }
+
+        [TestMethod]
+        public void RunBumpersTest()
+        {
+            Engine<string> engine = new Engine<string>(new List<IRule<string>>()) { RunBumperRules = true };
+            var result = engine.Execute("blah");
+            Assert.IsNotNull(result);
+            Assert.AreEqual(2, result.Count);
+        }
+
 
     }
 }

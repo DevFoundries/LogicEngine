@@ -8,17 +8,6 @@ namespace LogicEngine.Lib
 {
     public interface IRule<T> where T : class
     {
-        void Execute(T model);
+        IEngineResult Execute(T model);
     }
-
-    
-    public class RuleBase<T> : IRule<T> where T : class
-    {
-
-        public virtual void Execute(T model)
-        {
-        }
-
-    }
-
 }

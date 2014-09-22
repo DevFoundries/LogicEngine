@@ -7,18 +7,24 @@ namespace LogicEngine.Lib.Test
     public class RuleBaseTest
     {
         [TestMethod]
-        public void ConstructorTest()
+        public void PreRunTest()
         {
-            RuleBase<string> ruleBase = new RuleBase<string>();
+            PreRunRule<string> ruleBase = new PreRunRule<string>();
             Assert.IsNotNull(ruleBase);
+            var result = ruleBase.Execute("blah");
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.Message.Contains("PreRun"));
+
         }
 
         [TestMethod]
-        public void ExecuteTest()
+        public void PostTest()
         {
-            RuleBase<string> ruleBase = new RuleBase<string>();
+            PostRunRule<string> ruleBase = new PostRunRule<string>();
             ruleBase.Execute("blah");
-
+            var result = ruleBase.Execute("blah");
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.Message.Contains("PostRun"));
         }
     }
 }
