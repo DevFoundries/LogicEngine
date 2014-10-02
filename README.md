@@ -56,3 +56,16 @@ Engine<ExampleModel> engine = new Engine<ExampleModel>(
     });
 var retval = engine.Execute(model);
 return retval;```
+
+
+Note : You should use dependency injection here.
+
+Bumper Rules
+------------
+The engine has some "bumper rules". They're rules that run before/after all your rules. They will give you run start/stop times.
+
+```c#
+new Engine<SomeModel>(someListOfRules) {RunBumperRules = true;}
+```
+
+
