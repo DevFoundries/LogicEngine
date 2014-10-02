@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("LogicEngine.Lib")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Logic engine is designed to run arbitrary rules or bits of logic against a given model")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Wm. Barrett Simms")]
 [assembly: AssemblyProduct("LogicEngine.Lib")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
