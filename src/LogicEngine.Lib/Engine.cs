@@ -31,7 +31,7 @@ namespace LogicEngine.Lib
 
             foreach (IRule<T> rule in rules)
             {
-                rule.Execute(model);
+                this.results.Add(rule.Execute(model));
             }
 
             if (RunBumperRules)

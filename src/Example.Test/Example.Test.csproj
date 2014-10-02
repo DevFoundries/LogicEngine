@@ -63,6 +63,10 @@
       <Project>{65B84CCD-3FAD-4234-A6F7-33628E589C48}</Project>
       <Name>Example</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LogicEngine.Lib\LogicEngine.Lib.csproj">
+      <Project>{D11A7227-D7CB-4A35-80C6-7357D1410A8D}</Project>
+      <Name>LogicEngine.Lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

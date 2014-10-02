@@ -41,11 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddRule.cs" />
     <Compile Include="ExampleEngine.cs" />
+    <Compile Include="ExampleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LogicEngine.Lib\LogicEngine.Lib.csproj">
+      <Project>{D11A7227-D7CB-4A35-80C6-7357D1410A8D}</Project>
+      <Name>LogicEngine.Lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

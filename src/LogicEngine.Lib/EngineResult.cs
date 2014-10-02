@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@ namespace LogicEngine.Lib
 {
     public interface IEngineResult
     {
+        string Name { get; set; }
         bool HasError { get; }
         string Error { get; set; }
         string Message { get; set; }
@@ -26,6 +28,8 @@ namespace LogicEngine.Lib
         public bool HasError {
             get { return !string.IsNullOrEmpty(Error); }
         }
+
+        public string Name { get; set; }
         public string Error { get; set; }
         public string Message { get; set; }
         public DateTime TimeStart { get; set; }
