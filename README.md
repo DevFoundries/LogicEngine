@@ -43,7 +43,7 @@ Once the rules are created, you only need to create an engine with them and exec
 
 ```c#
 Engine<ExampleModel> engine = new Engine<ExampleModel>(
-    new List<IRule<ExampleModel>>()
+    new RuleCollection<ExampleModel>()
     {
         new AddRule(), 
         new DivisionRule(), 
@@ -54,8 +54,6 @@ var retval = engine.Execute(model);
 return retval;
 ```
 
-Note : You should use dependency injection here.
-
 Bumper Rules
 ------------
 The engine has some "bumper rules". They're rules that run before/after all your rules. They will give you run start/stop times.
@@ -64,4 +62,15 @@ The engine has some "bumper rules". They're rules that run before/after all your
 new Engine<SomeModel>(someListOfRules) {RunBumperRules = true;}
 ```
 
+Dependency Injection Suppot
+-----------
+You can use dependency injection to add your rules. Simply add them to the RulesCollection.
+
+```c#
+UnityContainer container = new UnityContainer();
+container.RegisterType<IEngine<string>,Engine<string>>();
+IRuleCollection<string> coll = new RuleCollection<string>() {rule1, rule2, rule3};
+container.RegisterInstance(coll);
+var engine = container.Resolve<IEngine<string>>();
+```
 
