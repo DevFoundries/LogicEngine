@@ -12,7 +12,7 @@ namespace Example
         public IList<IEngineResult> Run(ExampleModel model)
         {
             Engine<ExampleModel> engine = new Engine<ExampleModel>(
-                new List<IRule<ExampleModel>>()
+                new RuleCollection<ExampleModel>()
                 {
                     new AddRule(), 
                     new DivisionRule(), 

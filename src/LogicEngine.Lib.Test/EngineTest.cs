@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Practices.Unity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LogicEngine.Lib.Test
@@ -17,7 +18,7 @@ namespace LogicEngine.Lib.Test
         [TestMethod]
         public void ExecuteTest()
         {
-            Engine<string> engine = new Engine<string>(new List<IRule<string>>());
+            Engine<string> engine = new Engine<string>(new RuleCollection<string>());
             var result = engine.Execute("blah");
             Assert.IsNotNull(result);
         }
@@ -25,12 +26,22 @@ namespace LogicEngine.Lib.Test
         [TestMethod]
         public void RunBumpersTest()
         {
-            Engine<string> engine = new Engine<string>(new List<IRule<string>>()) { RunBumperRules = true };
+            Engine<string> engine = new Engine<string>(new RuleCollection<string>()) { RunBumperRules = true };
             var result = engine.Execute("blah");
             Assert.IsNotNull(result);
             Assert.AreEqual(2, result.Count);
         }
 
+        [TestMethod]
+        public void ExecuteViaUnity()
+        {
+            UnityContainer container = new UnityContainer();
+            container.RegisterType<IEngine<string>,Engine<string>>();
+            IRuleCollection<string> coll = new RuleCollection<string>();
+            container.RegisterInstance(coll);
 
+            var engine = container.Resolve<IEngine<string>>();
+            Assert.IsNotNull(engine);
+        }
     }
 }

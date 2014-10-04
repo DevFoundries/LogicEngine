@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,10 +15,10 @@ namespace LogicEngine.Lib
 
     public class Engine<T> : IEngine<T> where T : class
     {
-        private IList<IRule<T>> rules;
+        private IRuleCollection<T> rules;
         IList<IEngineResult> results = new List<IEngineResult>();
 
-        public Engine(IList<IRule<T>> rules )
+        public Engine(IRuleCollection<T> rules)
         {
             this.rules = rules;
         }
