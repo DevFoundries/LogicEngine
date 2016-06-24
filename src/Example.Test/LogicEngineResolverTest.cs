@@ -1,7 +1,6 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LogicEngine.Lib.Test
+namespace Example.Test
 {
     [TestClass]
     public class LogicEngineResolverTest

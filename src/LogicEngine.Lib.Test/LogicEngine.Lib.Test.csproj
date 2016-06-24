@@ -71,13 +71,16 @@
     <Compile Include="EngineTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RuleBaseTest.cs" />
-    <Compile Include="LogicEngineResolverTest.cs" />
     <Compile Include="EngineResultTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Example\Example.csproj">
+      <Project>{65B84CCD-3FAD-4234-A6F7-33628E589C48}</Project>
+      <Name>Example</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LogicEngine.Lib\LogicEngine.Lib.csproj">
       <Project>{d11a7227-d7cb-4a35-80c6-7357d1410a8d}</Project>
       <Name>LogicEngine.Lib</Name>
