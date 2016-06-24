@@ -67,7 +67,7 @@ The engine has some "bumper rules". They're rules that run before/after all your
 new Engine<SomeModel>(someListOfRules) {RunBumperRules = true;}
 ```
 
-Dependency Injection Suppot
+Dependency Injection Support
 -----------
 You can use dependency injection to add your rules. Simply add them to the RulesCollection.
 
