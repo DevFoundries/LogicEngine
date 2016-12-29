@@ -9,12 +9,13 @@ namespace LogicEngine.Lib.Test
         [TestMethod]
         public void ConstructorTest()
         {
-            EngineResult result = new EngineResult() { Error = "error", Message = "Message", TimeEnd = DateTime.UtcNow, TimeStart = DateTime.UtcNow};
+            IEngineResult result = new EngineResult() { Error = "error", Message = "Message" }.End();
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Error);
             Assert.IsNotNull(result.Message);
             Assert.IsNotNull(result.TimeEnd);
             Assert.IsNotNull(result.TimeStart);
+			Assert.IsNotNull(result.Elapsed);
             Assert.IsTrue(result.HasError);
         }
     }

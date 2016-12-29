@@ -10,9 +10,8 @@ namespace LogicEngine.Lib
     {
         public IEngineResult Execute(T model)
         {
-            IEngineResult result = new EngineResult() {TimeStart = DateTime.UtcNow};
+            IEngineResult result = new EngineResult();
             result.Message = this.GetType() + " :: Start ";
-            result.TimeEnd = DateTime.UtcNow;
             return result;
         }
     }
@@ -21,9 +20,8 @@ namespace LogicEngine.Lib
     {
         public IEngineResult Execute(T model)
         {
-            IEngineResult result = new EngineResult() { TimeStart = DateTime.UtcNow };
+            IEngineResult result = new EngineResult();
             result.Message = this.GetType() + " :: End ";
-            result.TimeEnd = DateTime.UtcNow;
             return result;
         }
     }

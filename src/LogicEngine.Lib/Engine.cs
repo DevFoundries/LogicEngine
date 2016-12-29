@@ -11,6 +11,7 @@ namespace LogicEngine.Lib
     {
         IList<IEngineResult> Execute(T model);
         bool RunBumperRules { get; set; }
+		TimeSpan LastRunElapsed { get; }
     }
 
     public class Engine<T> : IEngine<T> where T : class
@@ -25,24 +26,28 @@ namespace LogicEngine.Lib
 
         public IList<IEngineResult> Execute(T model)
         {
-            if (RunBumperRules)
+	        this.LastRunElapsed = new TimeSpan(0,0,0,0,0);
+
+			if (RunBumperRules)
             {
-                this.results.Add(new PreRunRule<T>().Execute(model));
+                this.results.Add(new PreRunRule<T>().Execute(model).End());
             }
 
             foreach (IRule<T> rule in rules)
             {
-                this.results.Add(rule.Execute(model));
+				this.results.Add(rule.Execute(model).End());
             }
 
             if (RunBumperRules)
             {
-                this.results.Add(new PostRunRule<T>().Execute(model));
+                this.results.Add(new PostRunRule<T>().Execute(model).End());
+	            this.LastRunElapsed = this.results.First().TimeStart - this.results.Last().TimeEnd;
             }
-            return this.results;
+			return this.results;
         }
 
         public bool RunBumperRules { get; set; }
+	    public TimeSpan LastRunElapsed { get; private set; }
     }
 
 }

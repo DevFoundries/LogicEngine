@@ -18,7 +18,7 @@ namespace Example
                     new DivisionRule(), 
                     new MultiplicationRule(), 
                     new SubtractRule()
-                });
+                }) {RunBumperRules = true};
             var retval = engine.Execute(model);
             return retval;
         }

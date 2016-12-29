@@ -12,9 +12,8 @@ namespace Example
     {
         public IEngineResult Execute(ExampleModel model)
         {
-            EngineResult result = new EngineResult() { TimeStart = DateTime.UtcNow, Name = GetType().ToString() };
+            EngineResult result = new EngineResult() { Name = GetType().ToString() };
             model.AddResult = model.Value1 + model.Value2;
-            result.TimeEnd = DateTime.UtcNow;
             return result;
         }
     }
@@ -23,9 +22,8 @@ namespace Example
     {
         public IEngineResult Execute(ExampleModel model)
         {
-            EngineResult result = new EngineResult() { TimeStart = DateTime.UtcNow, Name = GetType().ToString() };
+            EngineResult result = new EngineResult() { Name = GetType().ToString() };
             model.SubtractResult = model.Value1 - model.Value2;
-            result.TimeEnd = DateTime.UtcNow;
             return result;
         }
     }
@@ -34,10 +32,9 @@ namespace Example
     {
         public IEngineResult Execute(ExampleModel model)
         {
-            EngineResult result = new EngineResult() { TimeStart = DateTime.UtcNow, Name = GetType().ToString() };
+            EngineResult result = new EngineResult() { Name = GetType().ToString() };
             model.MultiplicaionResult = model.Value1 * model.Value2;
-            result.TimeEnd = DateTime.UtcNow;
-            return result;
+			return result;
         }
     }
 
@@ -45,10 +42,9 @@ namespace Example
     {
         public IEngineResult Execute(ExampleModel model)
         {
-            EngineResult result = new EngineResult() { TimeStart = DateTime.UtcNow, Name = GetType().ToString()};
+            EngineResult result = new EngineResult() { Name = GetType().ToString()};
             model.DivisionResult = (float)model.Value1 / model.Value2;
-            result.TimeEnd = DateTime.UtcNow;
-            return result;
+			return result;
         }
     }
 
