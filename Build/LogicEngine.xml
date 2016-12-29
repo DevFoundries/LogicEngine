@@ -1,6 +1,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="TestFast">
 	<PropertyGroup>
 		<MainSln>..\LogicEngine.sln</MainSln>
+    <SimianPath>simian-2.4.0.exe</SimianPath>
 		<LogicEngineLib>..\src\LogicEngine.Lib.Test\bin\LogicEngine.Lib.Test.dll</LogicEngineLib>
     <Example>..\src\Example.Test\bin\Example.Test.dll</Example>
     <TestContainers>/testcontainer:$(LogicEngineLib) /testcontainer:$(Example)</TestContainers>
@@ -15,8 +16,10 @@
 		<Exec Command='mstest.exe /nologo  $(TestContainers) /detail:description' />
 	</Target>
 
-	<Target Name="TestAllCI">
+	<Target Name="TestOnly">
 		<Message Text="========= Testing All ========" />
+    <CallTarget Targets="RemoveTestResults" />
+    <Exec Command='del TestResults.trx' />
 		<Exec Command='mstest.exe /nologo  $(TestContainers) /detail:description /resultsfile:TestResults.trx /category:"!ImportData"' />
 	</Target>
 
@@ -31,12 +34,12 @@
 	</Target>
 	
 	<Target Name="RemoveTestResults">
-		<Exec Command='rmdir /S /Q TestResults' />
+		<Exec Command='rmdir /S /Q ..\TestResults' />
 	</Target>
 	
 	<Target Name="SimianReport">
-		<Exec Command='simian-2.3.35.exe -includes=../src/**/*.cs -excludes=**/obj -excludes=**/bin -formatter=xml -failOnDuplication- > simian.xml' />
-		<Exec Command='SimianOutputCleaner.exe' />
+		<Exec Command='$(SimianPath) -includes=../src/**/*.cs -excludes=**/obj -excludes=**/bin -formatter=xml -failOnDuplication- > simian.xml' />
+		<Exec Command='SimianConsole.exe' />
 	</Target>
 	
 	<Target Name="Clean">
@@ -48,16 +51,31 @@
 		<RemoveDir Directories='obj\'></RemoveDir>
 		<Exec Command='git clean -fx -d' WorkingDirectory="..\" />
 	</Target>
-
+    
 	<Target Name="BuildMain">
 		<Message Text="================= Building $(MainSln)"></Message>
 		<CallTarget Targets="RemoveTestResults" />
 		<PropertyGroup>
 			<OutDir>$(SolutionRoot)\Bin\</OutDir>
 		</PropertyGroup>
+    <Exec Command="NuGet.exe restore $(MainSln)" />
 		<MSBuild Projects="$(MainSln)" Properties='Configuration=Debug;OutDir=bin\;nowarn=1591' Targets='Rebuild'></MSBuild>
 		<RemoveDir Directories='obj\'></RemoveDir>
 	</Target>
+
+  <Target Name="AddEnableCoverage">
+    <Message Text="========= Testing All ========" />
+    <Exec Command='ncover project-import --file=LogicEngine.ncover --overwrite' ContinueOnError='false' />
+    <Exec Command='ncover enable LogicEngine' />
+  </Target>
+
+  <Target Name="GetCoverageReport">
+    <Message Text="========= Testing All ========" />
+    <Exec Command='ncover summarize --project=LogicEngine --wait --fail-build' />
+    <MakeDir Directories="coverage" />
+    <Exec Command='ncover report --project=LogicEngine --file="coverage\fullcoveragereport.html"' />
+    <Exec Command='NCoverReportUpdater.exe coverage\fullcoveragereport.html http://localhost:80' />
+  </Target>
 
 </Project>
 

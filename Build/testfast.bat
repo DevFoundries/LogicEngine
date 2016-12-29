@@ -1,1 +1,2 @@
-msbuild LogicEngine.xml /t:SimianReport;BuildCommon;Coverage;CoverageReport
+@echo off
+msbuild LogicEngine.xml /t:BuildCommon;AddEnableCoverage;TestOnly;SimianReport;GetCoverageReport
