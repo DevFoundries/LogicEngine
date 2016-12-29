@@ -4,29 +4,39 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LogicEngine.Lib.Formatters;
 
 namespace LogicEngine.Lib
 {
-    public interface IEngine<T> where T : class
+	public interface IEngine<T> 
+		where T: class 
     {
         IList<IEngineResult> Execute(T model);
         bool RunBumperRules { get; set; }
-		TimeSpan LastRunElapsed { get; }
+		TimeSpan RunElapsed { get; }
     }
 
-    public class Engine<T> : IEngine<T> where T : class
-    {
-        private IRuleCollection<T> rules;
-        IList<IEngineResult> results = new List<IEngineResult>();
+    public class Engine<T> : IEngine<T> 
+		where T : class
+	{
+		private IRuleCollection<T> rules;
+		private IResultsFormatter formatter;
+		private IList<IEngineResult> results = new List<IEngineResult>();
 
-        public Engine(IRuleCollection<T> rules)
+		public bool RunBumperRules { get; set; }
+		public TimeSpan RunElapsed { get; private set; }
+
+		public Engine(IRuleCollection<T> rules, IResultsFormatter resultFormatter = null)
         {
             this.rules = rules;
+	        this.formatter = resultFormatter;
+			if (formatter == null)
+				formatter = new NoopFormatter();
         }
 
         public IList<IEngineResult> Execute(T model)
         {
-	        this.LastRunElapsed = new TimeSpan(0,0,0,0,0);
+	        this.RunElapsed = new TimeSpan(0,0,0,0,0);
 
 			if (RunBumperRules)
             {
@@ -41,13 +51,10 @@ namespace LogicEngine.Lib
             if (RunBumperRules)
             {
                 this.results.Add(new PostRunRule<T>().Execute(model).End());
-	            this.LastRunElapsed = this.results.First().TimeStart - this.results.Last().TimeEnd;
+	            this.RunElapsed = this.results.First().TimeStart - this.results.Last().TimeEnd;
             }
-			return this.results;
+	        formatter?.OutputResults(results,this.RunElapsed);
+	        return this.results;
         }
-
-        public bool RunBumperRules { get; set; }
-	    public TimeSpan LastRunElapsed { get; private set; }
     }
-
 }

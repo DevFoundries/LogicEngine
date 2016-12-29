@@ -35,7 +35,7 @@ namespace LogicEngine.Lib
         public string Error { get; set; }
         public string Message { get; set; }
 	    public DateTime TimeStart { get; } = DateTime.UtcNow;
-        public DateTime TimeEnd { get; private set; }
+		public DateTime TimeEnd { get; private set; }
 	    public TimeSpan Elapsed { get; private set; }
 
 	    public IEngineResult End()

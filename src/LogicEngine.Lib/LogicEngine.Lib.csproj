@@ -50,6 +50,9 @@
   <ItemGroup>
     <Compile Include="Engine.cs" />
     <Compile Include="EngineResult.cs" />
+    <Compile Include="Formatters\CsvResultsFormatter.cs" />
+    <Compile Include="Formatters\IResultsFormatter.cs" />
+    <Compile Include="Formatters\NoopFormatter.cs" />
     <Compile Include="PreRunRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IRule.cs" />
