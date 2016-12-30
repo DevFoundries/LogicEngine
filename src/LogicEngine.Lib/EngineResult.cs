@@ -26,12 +26,9 @@ namespace LogicEngine.Lib
         {
         }
 
+        public bool HasError => !string.IsNullOrEmpty(Error);
 
-        public bool HasError {
-            get { return !string.IsNullOrEmpty(Error); }
-        }
-
-        public string Name { get; set; }
+	    public string Name { get; set; }
         public string Error { get; set; }
         public string Message { get; set; }
 	    public DateTime TimeStart { get; } = DateTime.UtcNow;

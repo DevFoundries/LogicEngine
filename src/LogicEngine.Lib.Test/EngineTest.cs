@@ -57,7 +57,6 @@ namespace LogicEngine.Lib.Test
 	        container.RegisterType<IResultsFormatter, NoopFormatter>();
             IRuleCollection<string> coll = new RuleCollection<string>();
             container.RegisterInstance(coll);
-
             var engine = container.Resolve<IEngine<string>>();
             Assert.IsNotNull(engine);
         }

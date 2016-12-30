@@ -26,6 +26,5 @@ namespace LogicEngine.Lib.Formatters
 			}
 			this.Output = sb.ToString();
 		}
-
 	}
 }
