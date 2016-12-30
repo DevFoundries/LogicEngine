@@ -1,10 +1,10 @@
 [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/wbsimms?utm_source=github&utm_medium=button&utm_term=wbsimms&utm_campaign=github)
 
+[![Feature Requests](http://feathub.com/wbsimms/LogicEngine?format=svg)](http://feathub.com/wbsimms/LogicEngine)
+
 
 LogicEngine
 ===========
-
-[![Feature Requests](http://feathub.com/wbsimms/LogicEngine?format=svg)](http://feathub.com/wbsimms/LogicEngine)
 
 LogicEngine is designed to run arbitrary rules or bits of logic against a given model. It's written in C# .NET 4.6.2.
 
