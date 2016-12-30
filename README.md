@@ -1,6 +1,7 @@
-[![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/wbsimms?utm_source=github&utm_medium=button&utm_term=wbsimms&utm_campaign=github)
 
 [![Feature Requests](http://feathub.com/wbsimms/LogicEngine?format=svg)](http://feathub.com/wbsimms/LogicEngine)
+
+[![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/wbsimms?utm_source=github&utm_medium=button&utm_term=wbsimms&utm_campaign=github)
 
 
 LogicEngine
