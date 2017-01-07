@@ -3,7 +3,10 @@
 LogicEngine
 ===========
 
-LogicEngine is designed to run arbitrary rules or bits of logic against a given model. It's written in C# .NET 4.6.2.
+LogicEngine is designed to run arbitrary rules or bits of logic against a given model. It's written in C# .NET 4.6.2 and supports:
+- .NET 4.0
+- .NET 4.5
+- .NET 4.6+
 
 This project is born out of a DRY (don't repeat yourself) mentality. In other words, I was using the same code on several projects.
 
