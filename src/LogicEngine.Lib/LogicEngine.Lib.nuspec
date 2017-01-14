@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
-    <version>$version$</version>
-    <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <id>LogicEngine.Lib</id>
+    <version>2.1.0.0</version>
+    <title>LogicEngine.Lib</title>
+    <authors>wbsimms</authors>
+    <owners>wbsimms</owners>
     <licenseUrl>https://github.com/wbsimms/LogicEngine/blob/develop/LICENSE</licenseUrl>
     <projectUrl>https://github.com/wbsimms/LogicEngine</projectUrl>
 	<iconUrl>http://wbsimms.com/wp-content/uploads/2014/10/WBS_200px-icon1.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
-    <releaseNotes>Initial Release</releaseNotes>
+    <description>Logic engine is designed to run arbitrary rules or bits of logic against a given model</description>
+    <releaseNotes>Release 2.1</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>Logic Rules Engine</tags>
   </metadata>
