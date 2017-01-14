@@ -2,8 +2,8 @@
 	<PropertyGroup>
 		<MainSln>..\LogicEngine.sln</MainSln>
     <SimianPath>simian-2.4.0.exe</SimianPath>
-		<LogicEngineLib>..\src\LogicEngine.Lib.Test\bin\LogicEngine.Lib.Test.dll</LogicEngineLib>
-    <Example>..\src\Example.Test\bin\Example.Test.dll</Example>
+		<LogicEngineLib>..\src\LogicEngine.Lib.Test\bin\Debug\LogicEngine.Lib.Test.dll</LogicEngineLib>
+    <Example>..\src\Example.Test\bin\Debug\Example.Test.dll</Example>
     <TestContainers>/testcontainer:$(LogicEngineLib) /testcontainer:$(Example)</TestContainers>
 	</PropertyGroup>
 
@@ -59,7 +59,7 @@
 			<OutDir>$(SolutionRoot)\Bin\</OutDir>
 		</PropertyGroup>
     <Exec Command="NuGet.exe restore $(MainSln)" />
-		<MSBuild Projects="$(MainSln)" Properties='Configuration=Debug;OutDir=bin\;nowarn=1591' Targets='Rebuild'></MSBuild>
+		<MSBuild Projects="$(MainSln)" Properties='Configuration=Debug;OutDir=bin\Debug\;nowarn=1591' Targets='Rebuild'></MSBuild>
 		<RemoveDir Directories='obj\'></RemoveDir>
 	</Target>
 

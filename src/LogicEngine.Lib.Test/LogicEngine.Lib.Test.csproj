@@ -81,12 +81,19 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="TestObjects\Add.cs" />
+    <Compile Include="TestObjects\BadModel.cs" />
     <Compile Include="EngineTest.cs" />
+    <Compile Include="TestObjects\Fail.cs" />
+    <Compile Include="TestObjects\FailModel.cs" />
+    <Compile Include="TestObjects\IOtherInterface.cs" />
     <Compile Include="PreRunRuleTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RuleBaseTest.cs" />
     <Compile Include="EngineResultTest.cs" />
     <Compile Include="PrintResultsFormatterTest.cs" />
+    <Compile Include="TestObjects\Subtract.cs" />
+    <Compile Include="TestObjects\TestModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Example\Example.csproj">
@@ -101,6 +108,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
