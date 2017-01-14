@@ -1,0 +1,72 @@
+{
+    "Name": "LogicEngine",
+    "Config": {
+        "sequencePtCvgThreshold": 91.0,
+        "branchCvgThreshold": 93.5,
+        "conditionCvgThreshold": 62.2,
+        "complexityThreshold": 6.0,
+        "satComplexityThreshold": 95.0,
+        "crappyMethodThreshold": 2.0,
+        "crapThreshold": 6.0,
+        "isCodeCentralProject": false,
+        "enabled": true,
+        "aggregateEnabled": true,
+        "mergeMode": "None",
+        "logLevel": "None",
+        "visibility": "Private",
+        "syncWithCC": true,
+        "mergeAppDomains": true,
+        "name": "LogicEngine",
+        "matchRules": [
+            {
+                "matchData": "QTAgent32.*\\.exe",
+                "type": "Regex"
+            }
+        ],
+        "preCoverageFilter": {
+            "id": "CDE47D72FD70823FCD96BB19055B60DE20E90615",
+            "name": null,
+            "description": null,
+            "serverFilter": false,
+            "filterRules": [
+                {
+                    "include": true,
+                    "field": "Module",
+                    "condition": "Matches",
+                    "value": "LogicEngine.Lib.dll",
+                    "serverRule": false
+                },
+                {
+                    "include": true,
+                    "field": "Module",
+                    "condition": "Matches",
+                    "value": "Example.dll",
+                    "serverRule": false
+                },
+                {
+                    "include": false,
+                    "field": "Attribute",
+                    "condition": "Matches",
+                    "value": "System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage",
+                    "serverRule": false
+                },
+                {
+                    "include": false,
+                    "field": "Attribute",
+                    "condition": "Matches",
+                    "value": "System.Runtime.CompilerServices.CompilerGeneratedAttribute",
+                    "serverRule": false
+                },
+                {
+                    "include": false,
+                    "field": "Attribute",
+                    "condition": "Matches",
+                    "value": "System.CodeDom.Compiler.GeneratedCodeAttribute",
+                    "serverRule": false
+                }
+            ]
+        },
+        "postCoverageFilters": [],
+        "enabledOnCC": true
+    }
+}
