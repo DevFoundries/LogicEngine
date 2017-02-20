@@ -1,4 +1,5 @@
-[https://ci.appveyor.com/api/projects/status/github/logicengine](https://ci.appveyor.com/api/projects/status/github/logicengine)
+
+![LogicEngine Status](https://ci.appveyor.com/api/projects/status/github/wbsimms/logicengine?svg=true)
 
 [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/wbsimms?utm_source=github&utm_medium=button&utm_term=wbsimms&utm_campaign=github)
 
